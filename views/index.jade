@@ -1,0 +1,156 @@
+doctype html
+html
+  head
+      meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    style.
+        /* Sticky footer styles
+        -------------------------------------------------- */
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+        body {
+            /* Margin bottom by footer height */
+            margin-bottom: 60px;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            /* Set the fixed height of the footer here */
+            height: 60px;
+            background-color: #f5f5f5;
+        }
+
+        /* Custom page CSS
+        -------------------------------------------------- */
+        /* Not required for template or sticky footer method. */
+
+        body > .container {
+            padding: 60px 15px 0;
+        }
+
+        .container .text-muted {
+            margin: 20px 0;
+        }
+
+        .footer > .container {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        code {
+            font-size: 80%;
+        }
+
+
+
+body
+    nav.navbar.navbar-default.navbar-fixed-top
+        .container
+            .navbar-header
+                button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+                    span.sr-only Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a.navbar-brand(href='#') Drunk Map
+            #navbar.collapse.navbar-collapse
+                ul.nav.navbar-nav
+                    li
+                        a(href='#about') About
+                    li
+                        a(href='#contact') Contact
+
+            // /.nav-collapse
+    // Begin page content
+    .container
+      #map
+    footer.footer
+        .container
+
+            form.form-inline
+                .form-group
+                    label(for='phone-number') Phone
+                    input#phone-number.form-control(name='phone', type='tel', placeholder="ex. 0123456789")
+                button.btn.btn-default(type='submit') Join The Drunk Map
+            span#confirm.text-muted(style='display: none;') Number Added!
+
+
+
+
+                    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+          //script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+        script(src='https://code.jquery.com/jquery-1.12.0.min.js')
+          script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+          script(src='../javascripts/sidebar.js')
+
+      script.
+
+        $('form').on('submit',function(e){
+        e.preventDefault()
+            console.log($(this).serializeArray()[0].value)
+            $('form').toggle();
+            $('#confirm').show();
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: 'http://localhost:3000/phone_number',
+                data: JSON.stringify({'phone': $(this).serializeArray()[0].value}),
+                success: function (data, textStatus) {
+                    // data.redirect contains the string URL to redirect to
+                    }
+            });
+
+        });
+        function initMap() {
+
+            $.ajax({
+            type: "GET",
+            url: 'http://localhost:3000/drunk_people',
+            contentType: "application/json",
+            success: function (data, textStatus) {
+            if (data.ppl) {
+            // data.redirect contains the string URL to redirect to
+                locations = data.ppl;
+               console.log(locations)
+                var uluru = {lat: -25.363, lng: 131.044};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 4,
+                    center: uluru
+                });
+                var arrayLength = locations.length;
+                for (var i = 0; i < arrayLength; i++) {
+                    console.log(locations[i]);
+                    var marker = new google.maps.Marker({
+                        position: locations[i],
+                        map: map
+                    });
+
+
+                }
+
+
+                var marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map
+                });
+
+            }
+            else {
+            console.log(textStatus)
+            console.log(data)
+            }
+            }
+            });
+
+        }
+
+    script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCdLiAdPO-1CaPc---n1eOAC1l8HHLc1gw&callback=initMap')
+
