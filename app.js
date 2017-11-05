@@ -28,10 +28,11 @@ drunk_people = []
 sober_people = []
 
 
-phones = []
+phones = ['6174297932', '6174297932']
+question = ["Ask The World"]
 
 app.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
+    res.render('index', { the_question: question[0], AScore: drunk_people.length,  BScore: sober_people.length });
 });
 
 app.get('/yes_page', function(req, res, next) {
@@ -63,7 +64,23 @@ app.post('/phone_number', function(req, res, next) {
     console.log(req.body.phone)
     var phone = req.body.phone;
     phones.push(phone);
-    my_emailer(phone);
+    my_emailer(phone, question[0]);
+    res.send({'redirect': '/'});
+});
+
+
+app.post('/question_ask', function(req, res, next) {
+    console.log(req.body.question)
+    q = req.body.question
+
+    // var phone = req.body.phone;
+    // phones.push(phone);
+    phones.forEach(function (p) {
+        my_emailer(p, q);
+    });
+    question[0] = q
+    drunk_people = []
+    sober_people = []
     res.send({'redirect': '/'});
 });
 
@@ -95,7 +112,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 
 
 module.exports = app;

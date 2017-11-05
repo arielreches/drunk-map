@@ -44,6 +44,18 @@ html
             padding-left: 15px;
         }
 
+        #question {
+            font-size: 1.5em;
+        }
+
+        #byline {
+            font-size: 1em;
+        }
+
+        #score {
+            font-size: 1.5em;
+        }
+
         code {
             font-size: 80%;
         }
@@ -59,13 +71,24 @@ body
                     span.icon-bar
                     span.icon-bar
                     span.icon-bar
-                a.navbar-brand(href='#') Drunk Map by Ariel Reches
+                a.navbar-brand(href='#') #{the_question}
+
+
             #navbar.collapse.navbar-collapse
+                score#score.pull-right
+                    div A: #{AScore}
+                    div B: #{BScore}
+
                 ul.nav.navbar-nav
+                    li
+                        a#byline By Ariel Reches
+
                     li
                         a(href='#about') About
                     li
                         a(href='#contact') Contact
+
+
 
             // /.nav-collapse
     // Begin page content
@@ -73,13 +96,23 @@ body
       #map
     footer.footer
         .container
+            ul.nav.navbar-nav
+                li
+                    form#number-form.form-inline
+                        .form-group
+                            label(for='phone-number') Phone
+                            input#phone-number.form-control(name='phone', type='tel', placeholder="ex. 0123456789")
+                        button.btn.btn-default(type='submit') Join The Community
+                        span#confirm.text-muted(style='display: none;') Number Added!
 
-            form.form-inline
-                .form-group
-                    label(for='phone-number') Phone
-                    input#phone-number.form-control(name='phone', type='tel', placeholder="ex. 0123456789")
-                button.btn.btn-default(type='submit') Join The Drunk Map
-            span#confirm.text-muted(style='display: none;') Number Added!
+
+                    form#question_form.form-inline
+                        .form-group
+                            label(for='custom_question') Question
+                            input#custom_question.form-control(name='question', placeholder="A Cats or B Dogs?")
+                        button.btn.btn-default(type='submit') Ask the World!
+                        span#question_confirm.text-muted(style='display: none;') Question Asked!
+
 
 
 
@@ -92,10 +125,10 @@ body
 
       script.
 
-        $('form').on('submit',function(e){
+        $('#number-form').on('submit',function(e){
         e.preventDefault()
             console.log($(this).serializeArray()[0].value)
-            $('form').toggle();
+            $('#number-form').toggle();
             $('#confirm').show();
 
             $.ajax({
@@ -106,6 +139,22 @@ body
                 success: function (data, textStatus) {
                     // data.redirect contains the string URL to redirect to
                     }
+            });
+
+        });
+        $('#question_form').on('submit', function (e) {
+            e.preventDefault()
+            console.log($(this).serializeArray()[0].value)
+            $('#question_form').toggle();
+            $('#questionconfirm').show();
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: '/question_ask',
+                data: JSON.stringify({'question': $(this).serializeArray()[0].value}),
+                success: function (data, textStatus) {
+                window.location.href = "/"                }
             });
 
         });
@@ -135,15 +184,15 @@ body
                         map.setCenter(initialLocation);
                     });
                 }
-                var sloshed = {
-                    url: "../images/sloshed.png",
+                var Abutton = {
+                    url: "../images/Abutton.png",
                     size: new google.maps.Size(71, 71),
                     origin: new google.maps.Point(0, 0),
                     anchor: new google.maps.Point(17, 34),
                     scaledSize: new google.maps.Size(25, 25)
                 };
-                var sober = {
-                    url: "../images/sober.png",
+                var Bbutton = {
+                    url: "../images/Bbutton.png",
                     size: new google.maps.Size(71, 71),
                     origin: new google.maps.Point(0, 0),
                     anchor: new google.maps.Point(17, 34),
@@ -156,8 +205,8 @@ body
                     var marker = new google.maps.Marker({
                         position: locations[i],
                         map: map,
-                        title: "sloshed",
-                        icon: sloshed
+                        title: "A",
+                        icon: Abutton
                     });
 
                 }
@@ -166,8 +215,8 @@ body
                     var marker = new google.maps.Marker({
                         position: sober_locations[i],
                         map: map,
-                        title: "sober",
-                        icon: sober
+                        title: "B",
+                        icon: Bbutton
                     });
 
                 }
