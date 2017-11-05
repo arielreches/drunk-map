@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc21132c-09df-4bcb-ba54-a626bf3db20d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/my_emailer.js" afterPath="$PROJECT_DIR$/bin/my_emailer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.jade" afterPath="$PROJECT_DIR$/views/index.jade" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/my_emailer.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/my_emailer.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,17 +19,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="my_emailer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bin/my_emailer.js">
+      <file leaf-file-name="my_emailer.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/my_emailer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+            <state relative-caret-position="182">
+              <caret line="21" column="57" lean-forward="false" selection-start-line="21" selection-start-column="57" selection-end-line="21" selection-end-column="57" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.jade" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/index.jade">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="193">
@@ -47,8 +49,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="754">
-              <caret line="69" column="48" lean-forward="true" selection-start-line="69" selection-start-column="48" selection-end-line="69" selection-end-column="48" />
+            <state relative-caret-position="361">
+              <caret line="65" column="22" lean-forward="false" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -95,6 +97,8 @@
       <find>locations</find>
       <find>else</find>
       <find>sober</find>
+      <find>drunk</find>
+      <find>hey</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -113,9 +117,10 @@
         <option value="$PROJECT_DIR$/public/javascripts/sidebar.js" />
         <option value="$PROJECT_DIR$/views/yes.jade" />
         <option value="$PROJECT_DIR$/views/no.jade" />
-        <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/bin/my_emailer.js" />
         <option value="$PROJECT_DIR$/views/index.jade" />
+        <option value="$PROJECT_DIR$/bin/my_emailer.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/my_emailer.js" />
       </list>
     </option>
   </component>
@@ -172,12 +177,6 @@
             <path>
               <item name="DrunkMap" type="b2602c69:ProjectViewProjectNode" />
               <item name="DrunkMap" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DrunkMap" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DrunkMap" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -203,6 +202,12 @@
     <property name="last_opened_file_path" value="$USER_HOME$/Documents/bootstrap-3.3.7/docs/examples/sticky-footer-navbar" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ariel\WebstormProjects\DrunkMap" />
+      <recent name="C:\Users\Ariel\WebstormProjects\DrunkMap\public" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -216,7 +221,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Node.js.bin\www">
-    <configuration name="my_emailer.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="my_emailer.js" working-dir="$PROJECT_DIR$/bin" />
+    <configuration name="my_emailer.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="$PROJECT_DIR$/my_emailer.js" working-dir="$PROJECT_DIR$/bin" />
     <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Node.js.bin\www" />
       <item index="1" class="java.lang.String" itemvalue="Node.js.my_emailer.js" />
@@ -238,12 +243,12 @@
       <option name="presentableId" value="Default" />
       <updated>1509750423582</updated>
       <workItem from="1509750426380" duration="16503000" />
-      <workItem from="1509812392152" duration="22926000" />
+      <workItem from="1509812392152" duration="25979000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39429000" />
+    <option name="totallyTimeSpent" value="42482000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1102" extended-state="6" />
@@ -279,7 +284,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bin/my_emailer.js">
+    <entry file="file://$PROJECT_DIR$/my_emailer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="575">
           <caret line="23" column="16" lean-forward="false" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
@@ -389,14 +394,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="754">
-          <caret line="69" column="48" lean-forward="true" selection-start-line="69" selection-start-column="48" selection-end-line="69" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/images/sloshed.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -407,18 +404,26 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/my_emailer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/index.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
           <caret line="61" column="66" lean-forward="false" selection-start-line="61" selection-start-column="66" selection-end-line="61" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="65" column="22" lean-forward="false" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_emailer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="21" column="57" lean-forward="false" selection-start-line="21" selection-start-column="57" selection-end-line="21" selection-end-column="57" />
           <folding />
         </state>
       </provider>

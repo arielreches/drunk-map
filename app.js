@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var my_emailer = require('./my_emailer')
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -62,6 +63,7 @@ app.post('/phone_number', function(req, res, next) {
     console.log(req.body.phone)
     var phone = req.body.phone;
     phones.push(phone);
+    my_emailer(phone);
     res.send({'redirect': '/'});
 });
 
