@@ -7,7 +7,14 @@ var transporter = nodemailer.createTransport({
         pass: 'drunkmap12!'
     }
 });
-
+var possible = [@sms.alltelwireless.com
+AT&T	@txt.att.
+Boost Mobile	@sms.myboostmobile.com
+Sprint	@messaging.sprintpcs.com
+T-Mobile	@tmomail.net
+U.S. Cellular	@email.uscc.net
+Verizon	@vtext.com
+Virgin Mobile
 var mailOptions = {
     from: 'drunkmap@gmail.com',
     to: '6174297932@vtext.com',
