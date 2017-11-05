@@ -1,0 +1,35 @@
+html
+    body
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+        script.
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(printPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            };
+            function printPosition(position) {
+
+                $.ajax({
+                    type: "POST",
+                    url: '/no_page',
+                    data: JSON.stringify({lat: position.coords.latitude, lng: position.coords.longitude}),
+                    contentType: "application/json",
+                    success: function(data, textStatus) {
+                        if (data.redirect) {
+                            // data.redirect contains the string URL to redirect to
+                            console.log("sfd")
+                            window.location.href = data.redirect;
+                        }
+                        else {
+                            // data.form contains the HTML for the replacement form
+                            console.log(textStatus)
+                            console.log(data)
+                        }
+                    }
+                });
+                console.log( position.coords.latitude);
+                console.log(position.coords.longitude);
+            }
+
+
+

@@ -13,7 +13,7 @@ var mailOptions = {
     to: '6174297932@vtext.com',
     // subject: 'Sending Email using Node.js',
     text: 'Hey u drunk?\n' +
-    'Yes >>>> google.com\n' +
+    'Yes >>>> https://serene-cliffs-42310.herokuapp.com/yes_page\n' +
     'No >>>> facebook.com' +
     ''
     // html: '<b>Hello world?</b>' // html body

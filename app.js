@@ -24,6 +24,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 drunk_people = []
 
+sober_people = []
+
+
 phones = []
 
 app.get('/', function(req, res, next) {
@@ -34,6 +37,10 @@ app.get('/yes_page', function(req, res, next) {
     res.render('yes');
 });
 
+app.get('/no_page', function(req, res, next) {
+    res.render('no');
+});
+
 app.post('/yes_page', function(req, res, next) {
     console.log("ya they drunk")
     var lat = req.body.lat;
@@ -41,6 +48,15 @@ app.post('/yes_page', function(req, res, next) {
     drunk_people.push({'lat': lat, 'lng' : lng});
     res.send({'redirect': '/'});
 });
+
+app.post('/no_page', function(req, res, next) {
+    console.log("nah they aint drunk")
+    var lat = req.body.lat;
+    var lng = req.body.lng;
+    sober_people.push({'lat': lat, 'lng' : lng});
+    res.send({'redirect': '/'});
+});
+
 
 app.post('/phone_number', function(req, res, next) {
     console.log(req.body.phone)
@@ -51,14 +67,10 @@ app.post('/phone_number', function(req, res, next) {
 
 app.get('/drunk_people', function(req, res, next) {
     console.log("sending drunk people")
-    res.send({'ppl': drunk_people});
+    res.send({'ppl': [drunk_people, sober_people]});
 });
 
 
-app.get('/drunk_people', function(req, res, next) {
-    console.log("sending drunk people")
-    res.send({'ppl': drunk_people});
-});
 
 
 // app.use('/', index);

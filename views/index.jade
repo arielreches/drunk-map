@@ -109,6 +109,10 @@ body
             });
 
         });
+        function center(position){
+
+        }
+
         function initMap() {
 
             $.ajax({
@@ -117,30 +121,57 @@ body
             contentType: "application/json",
             success: function (data, textStatus) {
             if (data.ppl) {
-            // data.redirect contains the string URL to redirect to
-                locations = data.ppl;
-               console.log(locations)
+            // data.redirect contains the strling URL to redirect to
+                locations = data.ppl[0];
+                sober_locations = data.ppl[1]
                 var uluru = {lat: -25.363, lng: 131.044};
                 var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 4,
+                    zoom: 14,
                     center: uluru
                 });
-                var arrayLength = locations.length;
-                for (var i = 0; i < arrayLength; i++) {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                        map.setCenter(initialLocation);
+                    });
+                }
+                var sloshed = {
+                    url: "../images/sloshed.png",
+                    size: new google.maps.Size(71, 71),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(17, 34),
+                    scaledSize: new google.maps.Size(25, 25)
+                };
+                var sober = {
+                    url: "../images/sober.png",
+                    size: new google.maps.Size(71, 71),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(17, 34),
+                    scaledSize: new google.maps.Size(25, 25)
+                };
+                var drunk_length = locations.length;
+                var sober_length = sober_locations.length;
+                for (var i = 0; i < drunk_length; i++) {
                     console.log(locations[i]);
                     var marker = new google.maps.Marker({
                         position: locations[i],
-                        map: map
+                        map: map,
+                        title: "sloshed",
+                        icon: sloshed
                     });
 
+                }
+                for (var i = 0; i < sober_length; i++) {
+                    console.log("faggot");
+                    var marker = new google.maps.Marker({
+                        position: sober_locations[i],
+                        map: map,
+                        title: "sober",
+                        icon: sober
+                    });
 
                 }
 
-
-                var marker = new google.maps.Marker({
-                    position: uluru,
-                    map: map
-                });
 
             }
             else {
@@ -151,6 +182,5 @@ body
             });
 
         }
-
     script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCdLiAdPO-1CaPc---n1eOAC1l8HHLc1gw&callback=initMap')
 
