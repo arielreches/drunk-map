@@ -4,8 +4,8 @@ module.exports = function(number) {
     var TMClient = require('textmagic-rest-client');
     var num = '+1' + number
     var message = 'Hey u drunk? -from Ariel for hackathon\n' +
-            'Yes >>>> https://serene-cliffs-42310.herokuapp.com/yes_page\n' +
-            'No >>>> https://serene-cliffs-42310.herokuapp.com/no_page\n'
+            'Yes >>>> https://intense-lake-86375.herokuapp.com/yes_page\n' +
+            'No >>>> https://intense-lake-86375.herokuapp.com/no_page\n'
     var c = new TMClient('arielreches', 'iFBTY3HmVEyyAFsI9835PGIH0glArR');
     c.Messages.send({text: message, phones:num}, function(err, res){
         console.log('Messages.send()', err, res);
