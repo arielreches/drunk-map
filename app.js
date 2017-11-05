@@ -28,7 +28,7 @@ drunk_people = []
 sober_people = []
 
 
-phones = ['6174297932', '6174297932']
+phones = []
 question = ["Ask The World"]
 
 app.get('/', function(req, res, next) {
